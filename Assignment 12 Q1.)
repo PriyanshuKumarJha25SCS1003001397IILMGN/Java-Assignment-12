@@ -1,0 +1,46 @@
+
+// Parent Class
+class Payment {
+    void makePayment() {
+        System.out.println("Making a payment...");
+    }
+}
+
+// Child Class 1
+class UPIPayment extends Payment {
+    @Override
+    void makePayment() {
+        System.out.println("Payment made successfully using UPI.");
+    }
+}
+
+// Child Class 2
+class CashPayment extends Payment {
+    @Override
+    void makePayment() {
+        System.out.println("Payment made successfully using Cash.");
+    }
+}
+
+// Main Class
+public class PaymentSystem {
+    public static void main(String[] args) {
+
+        // Creating objects of child classes
+        UPIPayment upi = new UPIPayment();
+        CashPayment cash = new CashPayment();
+
+        // Calling methods using child class objects
+        upi.makePayment();
+        cash.makePayment();
+
+        // Demonstrating parent class reference
+        Payment p;
+
+        p = new UPIPayment();
+        p.makePayment();
+
+        p = new CashPayment();
+        p.makePayment();
+    }
+}
