@@ -1,0 +1,95 @@
+
+// Parent Class
+class Employee {
+
+    int employeeID;
+    String employeeName;
+
+    // Constructor
+    Employee(int id, String name) {
+        employeeID = id;
+        employeeName = name;
+    }
+
+    // Method to calculate salary
+    double calculateSalary() {
+        return 0;
+    }
+}
+
+// Child Class 1
+class FullTimeEmployee extends Employee {
+
+    double monthlySalary;
+
+    FullTimeEmployee(int id, String name, double salary) {
+        super(id, name);
+        monthlySalary = salary;
+    }
+
+    @Override
+    double calculateSalary() {
+        return monthlySalary;
+    }
+}
+
+// Child Class 2
+class PartTimeEmployee extends Employee {
+
+    double hoursWorked;
+    double paymentPerHour;
+
+    PartTimeEmployee(int id, String name,
+                     double hours, double rate) {
+        super(id, name);
+        hoursWorked = hours;
+        paymentPerHour = rate;
+    }
+
+    @Override
+    double calculateSalary() {
+        return hoursWorked * paymentPerHour;
+    }
+}
+
+// Main Class
+public class EmployeeSalarySystem {
+
+    public static void main(String[] args) {
+
+        // Creating child class objects
+        FullTimeEmployee emp1 =
+            new FullTimeEmployee(101, "Rahul", 30000);
+
+        PartTimeEmployee emp2 =
+            new PartTimeEmployee(102, "Amit", 100, 200);
+
+        // Calling methods using child class objects
+        System.out.println("Full Time Employee:");
+        System.out.println("Employee ID: " + emp1.employeeID);
+        System.out.println("Employee Name: " + emp1.employeeName);
+        System.out.println("Monthly Salary: " +
+                           emp1.calculateSalary());
+
+        System.out.println();
+
+        System.out.println("Part Time Employee:");
+        System.out.println("Employee ID: " + emp2.employeeID);
+        System.out.println("Employee Name: " + emp2.employeeName);
+        System.out.println("Monthly Salary: " +
+                           emp2.calculateSalary());
+
+        // Demonstrating Runtime Polymorphism
+        System.out.println();
+
+        Employee e;
+
+        e = new FullTimeEmployee(103, "Ravi", 40000);
+        System.out.println("Full Time Salary: " +
+                           e.calculateSalary());
+
+        e = new PartTimeEmployee(104, "Aman", 80, 150);
+        System.out.println("Part Time Salary: " +
+                           e.calculateSalary());
+    }
+}
